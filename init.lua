@@ -219,6 +219,7 @@ require('lualine').setup({
     icons_enabled = false,
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
+    tabline = {}
   },
   sections = {
     lualine_a = { 'mode' },
