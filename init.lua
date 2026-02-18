@@ -117,7 +117,7 @@ end, { nargs = "*" })
 vim.api.nvim_create_user_command("MakeQuickFixStay", function()
   local win = vim.fn.win_getid()
   local pos = vim.fn.getpos(".")
-  vim.cmd("MakeQuickFix san radlink")
+  vim.cmd("MakeQuickFix san torture")
   vim.fn.win_gotoid(win)
   vim.fn.setpos(".", pos)
 end, {})
@@ -184,7 +184,7 @@ custom_powerline.normal.a.bg = '#cccccc'
 custom_powerline.normal.a.fg = '#000000'
 
 -- file time stamp
-custom_powerline.normal.b.fg = '#ffffff'
+custom_powerline.normal.b.fg = '#eeeeee'
 custom_powerline.normal.b.bg = '#404040'
 custom_powerline.normal.b.gui = ''
 
@@ -229,11 +229,12 @@ require('lualine').setup({
     lualine_x = {
       {
         'location',
-        color = function() return { fg = '#ffffff', bg = '#2a2a2a', gui = '' } end,
+        color = function() return { fg = '#eeeeee', bg = '#2a2a2a', gui = '' } end,
       },
       {
         'fileformat',
-        color = function() return { fg = '#ffffff', bg = '#353535', gui = '' } end,
+        fmt = string.upper,
+        color = function() return { fg = '#eeeeee', bg = '#353535', gui = '' } end,
       },
     },
     lualine_y = { function() return os.date("%H:%M:%S | %d/%m/%Y", vim.fn.getftime(vim.fn.expand("%:p"))) end, },
