@@ -223,7 +223,12 @@ require('lualine').setup({
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = { gs_branch },
+    lualine_b = {
+      {
+        gs_branch,
+        color = { fg = '#dddddd' },
+      },
+    },
     lualine_c = { 'filename' },
 
     lualine_x = {
