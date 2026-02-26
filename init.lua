@@ -269,3 +269,18 @@ vim.api.nvim_set_hl(0, 'GitSignsChange',  { fg = '#ffff00' })
 vim.api.nvim_set_hl(0, 'GitSignsAdd',     { fg = '#00ff00' })
 vim.api.nvim_set_hl(0, 'GitSignsDelete',  { fg = '#ff0000' })
 
+-- ----------------------------------------------------------------
+-- ripgrep
+-- ----------------------------------------------------------------
+
+vim.o.grepprg = "rg --vimgrep --smart-case"
+vim.o.grepformat = "%f:%l:%c:%m"
+vim.keymap.set("n", "\\g", function()
+  local pattern = vim.fn.input("grep: ")
+  if pattern == nil or pattern == "" then
+    return
+  end
+  vim.cmd("silent grep! " .. vim.fn.escape(pattern, [[\ ]]) .. " .")
+  vim.cmd("cwindow")
+end)
+
