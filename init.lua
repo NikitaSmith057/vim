@@ -273,6 +273,8 @@ vim.api.nvim_set_hl(0, 'GitSignsDelete',  { fg = '#ff0000' })
 -- ripgrep
 -- ----------------------------------------------------------------
 
+-- winget install BurntSushi.ripgrep.MSVC
+
 vim.o.grepprg = "rg --vimgrep --smart-case"
 vim.o.grepformat = "%f:%l:%c:%m"
 vim.keymap.set("n", "\\g", function()
