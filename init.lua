@@ -15,6 +15,7 @@ call plug#begin(stdpath('config') . '/plugged')
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'tpope/vim-fugitive'
   Plug 'nvim-lualine/lualine.nvim'
+  Plug 'RRethy/vim-illuminate'
 call plug#end()
 ]])
 
