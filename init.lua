@@ -8,7 +8,6 @@ call plug#begin(stdpath('config') . '/plugged')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'derekwyatt/vim-fswitch'
   Plug 'nvim-lualine/lualine.nvim'
-  Plug 'nvim-tree/nvim-web-devicons'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
@@ -116,7 +115,7 @@ end, { nargs = "*" })
 vim.api.nvim_create_user_command("MakeQuickFixStay", function()
   local win = vim.fn.win_getid()
   local pos = vim.fn.getpos(".")
-  vim.cmd("MakeQuickFix san torture")
+  vim.cmd("MakeQuickFix san radlink")
   vim.fn.win_gotoid(win)
   vim.fn.setpos(".", pos)
 end, {})
@@ -143,8 +142,6 @@ vim.keymap.set("n", "<F4>", ":e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>")
 vim.keymap.set("n", "<F5>", ":MakeQuickFixStay<CR>")
 vim.keymap.set("n", "<F7>", ":cn<CR>")
 
-vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>")
-
 -- fswitch: toggle between .c/.cpp and .h
 vim.keymap.set("n", "<Leader>ol", "<cmd>FSRight<CR>",      { silent = true })
 vim.keymap.set("n", "<Leader>oL", "<cmd>FSSplitRight<CR>", { silent = true })
@@ -160,7 +157,8 @@ vim.keymap.set("x", "ga", "<Plug>(EasyAlign)")
 vim.keymap.set("n", "ga", "<Plug>(EasyAlign)")
 
 vim.keymap.set("n", "<A-1>",     ":b#<CR>")
-vim.keymap.set("n", "<leader>b", ":b ")
+vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<CR>")
+--vim.keymap.set("n", "<leader>b", ":b ")
 vim.keymap.set("n", "<leader>e", ":e ")
 vim.keymap.set("n", "<leader>m", ":silent make! san ")
 vim.keymap.set("n", "<leader>t", ":ta ")
@@ -283,7 +281,7 @@ vim.keymap.set("n", "\\g", function()
   if pattern == nil or pattern == "" then
     return
   end
-  vim.cmd("silent grep! " .. vim.fn.escape(pattern, [[\ ]]) .. " .")
+  vim.cmd("silent grep! " .. pattern)
   vim.cmd("cwindow")
 end)
 
