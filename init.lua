@@ -211,6 +211,12 @@ local function gs_branch()
   return vim.b.gitsigns_head or ""
 end
 
+local function line_col_location()
+  local line = vim.fn.line('.')
+  local col = vim.fn.virtcol('.')
+  return string.format("Line: %d Col: %d", line, col)
+end
+
 require('lualine').setup({
   options = {
     theme = custom_powerline,
@@ -231,7 +237,7 @@ require('lualine').setup({
 
     lualine_x = {
       {
-        'location',
+        line_col_location,
         color = function() return { fg = '#eeeeee', bg = '#2a2a2a', gui = '' } end,
       },
       {
@@ -285,4 +291,3 @@ vim.keymap.set("n", "\\g", function()
   vim.cmd("silent grep! " .. pattern)
   vim.cmd("cwindow")
 end)
-
