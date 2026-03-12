@@ -22,6 +22,9 @@ call plug#end()
 -- Settings
 -- ----------------------------------------------------------------
 
+-- tell terminal to use nvim colorscheme
+vim.opt.termguicolors = true
+
 vim.cmd("colorscheme dosbox-black")
 vim.opt.background = "dark"
 
@@ -291,3 +294,4 @@ vim.keymap.set("n", "\\g", function()
   vim.cmd("silent grep! " .. pattern)
   vim.cmd("cwindow")
 end)
+
