@@ -118,7 +118,7 @@ end, { nargs = "*" })
 vim.api.nvim_create_user_command("MakeQuickFixStay", function()
   local win = vim.fn.win_getid()
   local pos = vim.fn.getpos(".")
-  vim.cmd("MakeQuickFix san radlink")
+  vim.cmd("MakeQuickFix asan radlink")
   vim.fn.win_gotoid(win)
   vim.fn.setpos(".", pos)
 end, {})
@@ -163,7 +163,7 @@ vim.keymap.set("n", "<A-1>",     ":b#<CR>")
 vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<CR>")
 --vim.keymap.set("n", "<leader>b", ":b ")
 vim.keymap.set("n", "<leader>e", ":e ")
-vim.keymap.set("n", "<leader>m", ":silent make! san ")
+vim.keymap.set("n", "<leader>m", ":silent make! asan ")
 vim.keymap.set("n", "<leader>t", ":ta ")
 vim.keymap.set("n", "<leader>c", ":MakeQuickFixStay<CR>")
 vim.keymap.set("n", "\\w", "mzggVG\"+y`z")
@@ -248,6 +248,12 @@ require('lualine').setup({
         fmt = string.upper,
         color = function() return { fg = '#eeeeee', bg = '#353535', gui = '' } end,
       },
+      {
+        'o:encoding', -- option component same as &encoding in viml
+        fmt = string.upper, -- I'm not sure why it's upper case either ;)
+        -- cond = conditions.hide_in_width,
+        color = function() return { fg = '#eeeeee', bg = '#353535', gui = '' } end,
+      },
     },
     lualine_y = { function() return os.date("%H:%M:%S | %d/%m/%Y", vim.fn.getftime(vim.fn.expand("%:p"))) end, },
     lualine_z = {},
@@ -294,4 +300,3 @@ vim.keymap.set("n", "\\g", function()
   vim.cmd("silent grep! " .. pattern)
   vim.cmd("cwindow")
 end)
-
